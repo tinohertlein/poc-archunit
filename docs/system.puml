@@ -1,0 +1,35 @@
+@startuml
+
+skinparam monochrome true
+skinparam handwritten true
+
+package "core" {
+    class UserService
+
+    package "port.primary" {
+        interface UserApiPort
+    }
+
+    package "port.secondary" {
+        interface  UserPersistencePort
+    }
+}
+
+package "adapter" {
+
+    package "primary.api" {
+        class UserApiAdapter
+    }
+
+    package "secondary.persistence" {
+        class UserPersistenceAdapter
+    }
+}
+
+UserService .up.|> UserApiPort : implements
+UserService .up.> UserPersistencePort : uses
+
+UserApiAdapter ..> UserApiPort: uses
+UserPersistenceAdapter .left.|> UserPersistencePort: implements
+
+@enduml
