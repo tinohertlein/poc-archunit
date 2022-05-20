@@ -10,13 +10,18 @@ pattern ["Ports & Adapters"](https://medium.com/idealo-tech-blog/hexagonal-ports
 
 ## System Architecture
 
-The `UserService` is available to the outside via an API (`UserApiAdapter` - a primary adapter) and stores/loads
-entities via a persistence layer (`UserPersistenceAdapter` - a secondary adapter). The adapters and the `UserService`
-are loosely coupled via port-interfaces, which are located in the `core` package.
+* The `UserService` in package `core` is available to the outside world via an Api (`UserApiAdapter` - a primary
+  adapter)
+  and stores/loads entities via a persistence layer (`UserPersistenceAdapter` - a secondary adapter)
+* The adapters and the `UserService`
+  are loosely coupled via port-interfaces, which are located in sub-packages of the `core` package.
+* A class `UserModule` in package `configuration` puts all the stuff together, but is not a part of the "Ports &
+  Adapters" pattern. That one and a couple of other classes are left out of the following diagram to reduce clutter and
+  emphasize the "Ports & Adapters" approach.
 
 ![image](docs/system.png)
 
-For simplicity reasons, neither API nor persistence are implemented using frameworks like Spring. They are only coded as
+For simplicity reasons, neither Api nor persistence are implemented using frameworks like Spring. They are only coded as
 simple stubs instead.
 
 ## Tests
@@ -28,15 +33,17 @@ couple of integration tests and unit tests are realized as well, but they do not
 
 The following relations between classes & interfaces are checked with ArcUnit:
 
-* Interfaces & classes in package `core`
-    * **may only** depend on interfaces or classes inside their own package
-* Interfaces & classes in package `adapter`
-    * **may only** depend on interfaces or classes inside their own package
-    * **may only** depend on interfaces inside their corresponding package in `core.port`
+* Stuff in package `core.service` **may not** be accessed from the outside
+* Stuff in package `adapter` **may not** be accessed from the outside
+* Stuff in package `core.port.primary` **may only** be accessed from `core.service` and `adapter.primary`
+* Stuff in package `core.port.secondary` **may only** be accessed from `core.service` and `adapter.secondary`
+
+The `UserModule`-class in package `configuration` - gluing it all together - obviously needs to access all the classes &
+interfaces to inject dependencies. So this package gets special treatment in the ArchUnit-tests.
 
 #### Disclaimer
 
-There are certainly many more best-practices concerning dependencies among classes & interfaces, that are also worth to
-be checked with ArchUnit, but only the afore-mentioned ones are realized in this proof of concept.
+There are certainly many more best-practices concerning relations between packages, classes and interfaces, that are
+also worth to be checked with ArchUnit, but only the afore-mentioned ones are realized in this proof of concept.
 
 
