@@ -5,9 +5,8 @@ import dev.hertlein.pocs.archunit.user.core.model.UserId;
 import dev.hertlein.pocs.archunit.user.core.model.UserName;
 import dev.hertlein.pocs.archunit.user.core.port.primary.UserApiPort;
 import dev.hertlein.pocs.archunit.user.core.port.secondary.UserPersistencePort;
-import lombok.RequiredArgsConstructor;
-
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class UserService implements UserApiPort {

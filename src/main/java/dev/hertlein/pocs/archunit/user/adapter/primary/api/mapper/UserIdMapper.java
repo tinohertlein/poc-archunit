@@ -4,7 +4,7 @@ import dev.hertlein.pocs.archunit.user.core.model.UserId;
 
 public class UserIdMapper {
 
-    public  UserId fromString(String userId) {
+    public UserId fromString(String userId) {
         return new UserId(userId);
     }
 

@@ -15,6 +15,7 @@ public class UserDtoMapper {
     }
 
     public UserDto toDto(User user) {
-        return new UserDto(userIdMapper.toString(user.userId()), user.userName().firstName(), user.userName().lastName());
+        return new UserDto(userIdMapper.toString(user.userId()), user.userName().firstName(),
+                user.userName().lastName());
     }
 }

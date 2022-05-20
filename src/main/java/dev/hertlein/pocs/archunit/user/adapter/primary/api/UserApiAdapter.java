@@ -6,10 +6,9 @@ import dev.hertlein.pocs.archunit.user.adapter.primary.api.mapper.UserDtoMapper;
 import dev.hertlein.pocs.archunit.user.adapter.primary.api.mapper.UserIdMapper;
 import dev.hertlein.pocs.archunit.user.adapter.primary.api.mapper.UserNameDtoMapper;
 import dev.hertlein.pocs.archunit.user.core.port.primary.UserApiPort;
-import lombok.RequiredArgsConstructor;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class UserApiAdapter {

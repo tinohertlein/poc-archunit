@@ -2,7 +2,6 @@ package dev.hertlein.pocs.archunit.user.core.port.secondary;
 
 import dev.hertlein.pocs.archunit.user.core.model.User;
 import dev.hertlein.pocs.archunit.user.core.model.UserId;
-
 import java.util.List;
 
 public interface UserPersistencePort {

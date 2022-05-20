@@ -5,12 +5,11 @@ import dev.hertlein.pocs.archunit.user.adapter.secondary.persistence.mapper.User
 import dev.hertlein.pocs.archunit.user.core.model.User;
 import dev.hertlein.pocs.archunit.user.core.model.UserId;
 import dev.hertlein.pocs.archunit.user.core.port.secondary.UserPersistencePort;
-import lombok.RequiredArgsConstructor;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class UserPersistenceAdapter implements UserPersistencePort {
