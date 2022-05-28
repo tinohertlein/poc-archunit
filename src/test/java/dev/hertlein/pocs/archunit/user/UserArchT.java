@@ -6,6 +6,8 @@ import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.library.Architectures;
+import com.tngtech.archunit.library.dependencies.SliceRule;
+import com.tngtech.archunit.library.dependencies.SlicesRuleDefinition;
 import static com.tngtech.archunit.core.domain.JavaClass.Predicates.resideInAPackage;
 import static com.tngtech.archunit.core.domain.JavaClass.Predicates.resideInAnyPackage;
 import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
@@ -13,6 +15,15 @@ import static com.tngtech.archunit.library.Architectures.onionArchitecture;
 
 @AnalyzeClasses(packages = "dev.hertlein.pocs.archunit.user", importOptions = {ImportOption.DoNotIncludeTests.class})
 public class UserArchT {
+
+    @ArchTest
+    void verifyNoCycles(JavaClasses classes) {
+        SliceRule rule = SlicesRuleDefinition.slices()
+                .matching("dev.hertlein.pocs.archunit.user.(*)..")
+                .should().beFreeOfCycles();
+
+        rule.check(classes);
+    }
 
     @ArchTest
     void verifyPortsAndAdaptersNatively(JavaClasses classes) {
