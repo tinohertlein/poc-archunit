@@ -27,11 +27,12 @@ simple stubs instead.
 ## Tests
 
 To show the inclusion of ArchUnit into the Maven build & testing lifecycle in conjunction with other types of tests, a
-couple of integration tests and unit tests are realized as well, but they do not cover the whole functionality.
+couple of [Integration Tests](src/test/java/dev/hertlein/pocs/archunit/user/UserIT.java)
+and [Unit Tests](src/test/java/dev/hertlein/pocs/archunit/user/core/service/UserValidatorTest.java) are realized as well, but they do not cover the whole functionality.
 
 ### ArchUnit
 
-The following relations between classes & interfaces are checked with ArchUnit:
+The following relations between classes & interfaces are checked with [ArchUnit Tests](src/test/java/dev/hertlein/pocs/archunit/user/UserArchT.java):
 
 * Stuff in package `core.service` **may not** be accessed from the outside
 * Stuff in package `adapter` **may not** be accessed from the outside
