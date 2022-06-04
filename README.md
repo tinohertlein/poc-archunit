@@ -3,7 +3,7 @@
 [![CI](https://github.com/tinohertlein/poc-archunit/actions/workflows/ci.yml/badge.svg)](https://github.com/tinohertlein/poc-archunit/actions/workflows/ci.yml)
 
 This repository contains a proof of concept, how violations of a given architecture pattern can be recognized
-with [ArchUnit](https://www.archunit.org/) included into a Maven-lifecycle.
+with [ArchUnit](https://www.archunit.org/) integrated into a Maven-lifecycle.
 
 In order to do this, a simple CRUD-application with a "user"-domain is implemented in Java with the architecture
 pattern ["Ports & Adapters"](https://medium.com/idealo-tech-blog/hexagonal-ports-adapters-architecture-e3617bcf00a0).
@@ -21,7 +21,7 @@ pattern ["Ports & Adapters"](https://medium.com/idealo-tech-blog/hexagonal-ports
 
 ![image](docs/system.png)
 
-For simplicity reasons, neither Api nor persistence are implemented using frameworks like Spring. They are only coded as
+For simplicity reasons, neither api nor persistence are implemented using frameworks like Spring. They are only coded as
 simple stubs instead.
 
 ## Tests
@@ -31,7 +31,7 @@ couple of integration tests and unit tests are realized as well, but they do not
 
 ### ArchUnit
 
-The following relations between classes & interfaces are checked with ArcUnit:
+The following relations between classes & interfaces are checked with ArchUnit:
 
 * Stuff in package `core.service` **may not** be accessed from the outside
 * Stuff in package `adapter` **may not** be accessed from the outside
